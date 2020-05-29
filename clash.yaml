@@ -118,23 +118,16 @@ Proxy:
 
 
 # 配置开始
-- name: "V2ray节点的主机测试"
-  type: vmess
-  server: v2rayssr.com
-  port: 443
-  uuid: 5b8098e0-c95d-4c74-b5d5-4a330969c8cb
-  alterId: 2
-  cipher: auto
-  tls: true
-  network: ws
-  ws-path: /v2rayssrcom/
-  Host: v2rayssr.com
+- name: "解锁网易云"
+  type: http
+  server: 101.132.136.243
+  port: 19980
 
 - name: "Trojan节点的主机测试"
   type: trojan
-  server: www.v2rayssr.com
+  server: rollingshmily.top
   port: 443
-  password: v2rayssr.com
+  password: 964078205
 
  
 ###############################################################配置分割线
@@ -146,7 +139,6 @@ Proxy Group:
 - name: "自动节点选择"
   type: url-test
   proxies:
-    - "V2ray节点的主机测试"
     - "Trojan节点的主机测试"
   url: 'http://www.gstatic.com/generate_204'
   interval: 300
@@ -156,7 +148,6 @@ Proxy Group:
   type: select
   proxies:
     - "自动节点选择"
-    - "V2ray节点的主机测试"
     - "Trojan节点的主机测试"
 # 白名单模式 PROXY，黑名单模式 DIRECT
 - name: "Final"
@@ -175,14 +166,12 @@ Proxy Group:
   type: select
   proxies:
     - "PROXY"
-    - "V2ray节点的主机测试"
     - "Trojan节点的主机测试"
 # 大陆流媒体面向港澳台限定服务
 - name: "HKMTMedia"
   type: select
   proxies:
     - "DIRECT"
-    - "V2ray节点的主机测试"
     - "Trojan节点的主机测试"
 # 运营商及声名狼藉网站劫持
 - name: "Hijacking"
@@ -190,6 +179,14 @@ Proxy Group:
   proxies:
     - "REJECT"
     - "DIRECT"
+# 网易云   
+- name: "Netease Music"
+    type: select
+    proxies:
+      - DIRECT
+      - Domestic
+      - Proxy
+      - "解锁网易云"
 
 # 规则
 Rule:
@@ -355,6 +352,51 @@ Rule:
 - IP-CIDR,220.115.251.25/32,Hijacking,no-resolve
 - IP-CIDR,222.73.156.235/32,Hijacking,no-resolve
 
+# Netease Music 网易云音乐
+ - DOMAIN,apm.music.163.com,Netease Music
+ - DOMAIN,apm3.music.163.com,Netease Music
+ - DOMAIN,interface.music.163.com,Netease Music
+ - DOMAIN,interface3.music.163.com,Netease Music
+ - DOMAIN,music.126.net,Netease Music
+ - DOMAIN,music.163.com,Netease Music
+ - IP-CIDR,101.71.154.241/32,Netease Music,no-resolve
+ - IP-CIDR,103.126.92.132/32,Netease Music,no-resolve
+ - IP-CIDR,103.126.92.133/32,Netease Music,no-resolve
+ - IP-CIDR,112.13.119.17/32,Netease Music,no-resolve
+ - IP-CIDR,112.13.122.1/32,Netease Music,no-resolve
+ - IP-CIDR,115.236.118.33/32,Netease Music,no-resolve
+ - IP-CIDR,115.236.121.1/32,Netease Music,no-resolve
+ - IP-CIDR,118.24.63.156/32,Netease Music,no-resolve
+ - IP-CIDR,193.112.159.225/32,Netease Music,no-resolve
+ - IP-CIDR,223.252.199.66/32,Netease Music,no-resolve
+ - IP-CIDR,223.252.199.67/32,Netease Music,no-resolve
+ - IP-CIDR,39.105.63.80/32,Netease Music,no-resolve
+ - IP-CIDR,45.254.48.1/32,Netease Music,no-resolve
+ - IP-CIDR,47.100.127.239/32,Netease Music,no-resolve
+ - IP-CIDR,59.111.160.195/32,Netease Music,no-resolve
+ - IP-CIDR,59.111.160.197/32,Netease Music,no-resolve
+ - IP-CIDR,59.111.181.35/32,Netease Music,no-resolve
+ - IP-CIDR,59.111.181.38/32,Netease Music,no-resolve
+ - IP-CIDR,59.111.181.60/32,Netease Music,no-resolve
+ - IP-CIDR,39.105.63.80/32,Netease Music
+ - IP-CIDR,45.254.48.1/32,Netease Music
+ - IP-CIDR,47.100.127.239/32,Netease Music
+ - IP-CIDR,59.111.160.195/32,Netease Music
+ - IP-CIDR,59.111.160.197/32,Netease Music
+ - IP-CIDR,59.111.181.35/32,Netease Music
+ - IP-CIDR,59.111.181.38/32,Netease Music
+ - IP-CIDR,59.111.181.60/32,Netease Music
+ - IP-CIDR,101.71.154.241/32,Netease Music
+ - IP-CIDR,103.126.92.132/32,Netease Music
+ - IP-CIDR,103.126.92.133/32,Netease Music
+ - IP-CIDR,112.13.119.17/32,Netease Music
+ - IP-CIDR,112.13.122.1/32,Netease Music
+ - IP-CIDR,115.236.118.33/32,Netease Music
+ - IP-CIDR,115.236.121.1/32,Netease Music
+ - IP-CIDR,118.24.63.156/32,Netease Music
+ - IP-CIDR,193.112.159.225/32,Netease Music
+ - IP-CIDR,223.252.199.66/32,Netease Music
+ - IP-CIDR,223.252.199.67/32,Netease Music
 # Malware 恶意网站
 # > 快压
 # https://zhuanlan.zhihu.com/p/39534279
