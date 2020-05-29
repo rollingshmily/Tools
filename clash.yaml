@@ -118,10 +118,6 @@ Proxy:
 
 
 # 配置开始
-- name: "解锁网易云"
-  type: http
-  server: 101.132.136.243
-  port: 19980
 
 - name: "Trojan节点的主机测试"
   type: trojan
@@ -186,7 +182,6 @@ Proxy Group:
       - DIRECT
       - Domestic
       - Proxy
-      - "解锁网易云"
 
 # 规则
 Rule:
